@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>DecoderWidget</class>
+ <widget class="QWidget" name="DecoderWidget">
+  <layout class="QVBoxLayout">
+   <item>
+    <widget class="QTextBrowser" name="decoderTextBrowser"/>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
