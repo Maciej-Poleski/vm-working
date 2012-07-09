@@ -119,3 +119,16 @@ void Processor::copyToRegister(uint8_t index, Register::Type value)
 {
     _registers[index-1]->setValue(value);
 }
+
+void Processor::_loadToRegister(uint8_t index, Register::Type value)
+{
+    Q_ASSERT(index>=0);
+    Q_ASSERT(index<16);
+    _registers[index]->setValue(value);
+}
+
+void Processor::reinitialize()
+{
+    _instructionPointer->setValue(0);
+    flushSignals();
+}

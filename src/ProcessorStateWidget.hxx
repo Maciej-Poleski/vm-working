@@ -18,6 +18,9 @@ public:
 
     void setProcessor(Processor *processor);
 
+public slots:
+    void repopulateGui();
+
 private slots:
     void disableInstructionPointerLineEdit();
     void updateInstructionPointerLineEdit(Register::Type newValue);

@@ -172,3 +172,9 @@ ProcessorStateWidget::updateRegisterLineEdit(uint8_t index,
         break;
     }
 }
+
+void ProcessorStateWidget::repopulateGui()
+{
+    for(uint8_t i=1;i<=16;++i)
+        updateRegisterLineEdit(i,_processor->getRegister(i));
+}

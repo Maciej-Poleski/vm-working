@@ -6,26 +6,11 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>117</width>
-    <height>58</height>
+    <width>16</width>
+    <height>16</height>
    </rect>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout">
-   <item>
-    <widget class="QPushButton" name="stepPushButton">
-     <property name="text">
-      <string>Krok</string>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QPushButton" name="loadImagePushButton">
-     <property name="text">
-      <string>Załaduj obraz</string>
-     </property>
-    </widget>
-   </item>
-  </layout>
+  <layout class="QVBoxLayout" name="verticalLayout"/>
  </widget>
  <resources/>
  <connections/>

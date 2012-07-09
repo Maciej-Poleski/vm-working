@@ -9,7 +9,7 @@
 #include <QtGui/QMessageBox>
 
 DecoderStateWidget::DecoderStateWidget(QWidget *parent) :
-    QWidget(parent)
+    QWidget(parent),_decoder(nullptr)
 {
     setupUi(this);
     connectSignalsAndSlots();
@@ -17,34 +17,27 @@ DecoderStateWidget::DecoderStateWidget(QWidget *parent) :
 
 void DecoderStateWidget::setDecoder(Decoder *decoder)
 {
+    if(_decoder!=nullptr)
+        disconnectDecoderFromThis();
     _decoder=decoder;
-    connectDecoderToThis();
+    if(_decoder!=nullptr)
+        connectDecoderToThis();
 }
 
 void DecoderStateWidget::connectDecoderToThis()
 {
-    connect(stepPushButton,SIGNAL(clicked()),_decoder,SLOT(makeSingleStep()));
+}
+
+void DecoderStateWidget::disconnectDecoderFromThis()
+{
 }
 
 void DecoderStateWidget::connectSignalsAndSlots()
 {
-    connect(loadImagePushButton,SIGNAL(clicked()),this,SLOT(loadImage()));
+
 }
 
-void DecoderStateWidget::loadImage()
+void DecoderStateWidget::repopulateGui()
 {
-    QFileDialog dialog(this);
-    dialog.setFileMode(QFileDialog::ExistingFile);
-    if(dialog.exec())
-    {
-        QFile file(dialog.selectedFiles().first());
-        try
-        {
-            _decoder->setImage(&file);
-        }
-        catch(std::runtime_error e)
-        {
-            QMessageBox::critical(this,"Błąd podczas ładowania obrazu",e.what());
-        }
-    }
+// DO NOTHING
 }

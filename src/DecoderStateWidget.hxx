@@ -14,11 +14,14 @@ public:
 
     void setDecoder(Decoder *decoder);
 
+public slots:
+    void repopulateGui();
+
 private slots:
-    void loadImage();
 
 private:
     void connectDecoderToThis();
+    void disconnectDecoderFromThis();
     void connectSignalsAndSlots();
 
     Decoder *_decoder;

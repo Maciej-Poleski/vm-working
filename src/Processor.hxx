@@ -25,6 +25,10 @@ public:
 
     void copyToRegister(uint8_t index, Register::Type value);
 
+    // Instruction set
+
+    void _loadToRegister(uint8_t index, Register::Type value);
+
 signals:
     void registerChanged(uint8_t index,Register::Type newValue);
     void registerChanged(uint8_t index);
@@ -33,6 +37,7 @@ signals:
 
 public slots:
     void flushSignals();
+    void reinitialize();
 
 private slots:
     void dispatchRegisterChange(Register::Type newValue);

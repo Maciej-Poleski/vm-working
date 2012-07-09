@@ -7,7 +7,9 @@
 
 class ProcessorStateWidget;
 class DecoderStateWidget;
-class DecoderWidget;
+class MemoryStateWidget;
+class MemoryControlWidget;
+class MachineControlWidget;
 class Machine;
 
 class MachineWidget : public QWidget, private Ui::MachineWidget
@@ -21,13 +23,17 @@ public:
 signals:
 
 public slots:
+    void repopulateGui();
 
 private:
     void connectMachineToThis();
+    void disconnectMachineFromThis();
 
     ProcessorStateWidget *_processorStateWidget;
     DecoderStateWidget *_decoderStateWidget;
-    DecoderWidget *_decoderWidget;
+    MemoryControlWidget *_memoryControlWidget;
+    MemoryStateWidget *_memoryStateWidget;
+    MachineControlWidget *_machineControlWidget;
     Machine *_machine;
 };
 
