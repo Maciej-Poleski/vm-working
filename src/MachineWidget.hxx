@@ -16,9 +16,9 @@ class MachineWidget : public QWidget, private Ui::MachineWidget
 {
     Q_OBJECT
 public:
-    explicit MachineWidget(QWidget *parent = 0);
+    explicit MachineWidget(QWidget* parent = 0);
 
-    void setMachine(Machine *machine);
+    void setMachine(Machine* machine);
 
 signals:
 
@@ -29,12 +29,12 @@ private:
     void connectMachineToThis();
     void disconnectMachineFromThis();
 
-    ProcessorStateWidget *_processorStateWidget;
-    DecoderStateWidget *_decoderStateWidget;
-    MemoryControlWidget *_memoryControlWidget;
-    MemoryStateWidget *_memoryStateWidget;
-    MachineControlWidget *_machineControlWidget;
-    Machine *_machine;
+    ProcessorStateWidget* _processorStateWidget;
+    DecoderStateWidget* _decoderStateWidget;
+    MemoryControlWidget* _memoryControlWidget;
+    MemoryStateWidget* _memoryStateWidget;
+    MachineControlWidget* _machineControlWidget;
+    Machine* _machine;
 };
 
 #endif // MACHINEWIDGET_HXX

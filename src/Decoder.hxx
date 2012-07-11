@@ -14,10 +14,10 @@ class Decoder : public QObject
 {
     Q_OBJECT
 public:
-    explicit Decoder(QObject *parent = 0);
+    explicit Decoder(QObject* parent = 0);
 
-    void setProcessor(Processor *processor);
-    void setMemory(Memory *memory);
+    void setProcessor(Processor* processor);
+    void setMemory(Memory* memory);
     QString decodeInstructionAt(Register::Type address);
 
 signals:
@@ -36,9 +36,9 @@ private slots:
 private:
     void makeSingleStep();
 
-    Processor *_processor;
-    Memory *_memory;
-    InstructionsProvider * const _instructionsProvider;
+    Processor* _processor;
+    Memory* _memory;
+    InstructionsProvider* const _instructionsProvider;
     bool _wantStop;
 };
 

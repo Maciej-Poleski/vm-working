@@ -14,9 +14,9 @@ class ProcessorStateWidget : public QWidget, private Ui::ProcessorStateWidget
     Q_OBJECT
 
 public:
-    explicit ProcessorStateWidget(QWidget *parent = 0);
+    explicit ProcessorStateWidget(QWidget* parent = 0);
 
-    void setProcessor(Processor *processor);
+    void setProcessor(Processor* processor);
 
 public slots:
     void repopulateGui();
@@ -25,12 +25,12 @@ private slots:
     void disableInstructionPointerLineEdit();
     void updateInstructionPointerLineEdit(Register::Type newValue);
     void disableRegisterLineEdit(uint8_t index);
-    void updateRegisterLineEdit(uint8_t index,Register::Type newValue);
+    void updateRegisterLineEdit(uint8_t index, Register::Type newValue);
 
 private:
     void connectProcesorToThis();
 
-    Processor *_processor;
+    Processor* _processor;
 };
 
 #endif // PROCESSORSTATEWIDGET_HXX

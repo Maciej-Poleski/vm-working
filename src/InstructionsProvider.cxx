@@ -4,26 +4,26 @@
 #include "Memory.hxx"
 
 InstructionsProvider::InstructionsProvider() :
-    _processor(nullptr),_memory(nullptr)
+    _processor(nullptr), _memory(nullptr)
 {
 }
 
-void InstructionsProvider::setProcessor(Processor *processor)
+void InstructionsProvider::setProcessor(Processor* processor)
 {
-    _processor=processor;
+    _processor = processor;
 }
 
-void InstructionsProvider::setMemory(Memory *memory)
+void InstructionsProvider::setMemory(Memory* memory)
 {
-    _memory=memory;
+    _memory = memory;
 }
 
 Register::Type InstructionsProvider::nextOpCode()
 {
     Q_CHECK_PTR(_processor);
     Q_CHECK_PTR(_memory);
-    Register::Type result=
-            _memory->getMemoryCeil(_processor->instructionPointer());
+    Register::Type result =
+        _memory->getMemoryCeil(_processor->instructionPointer());
     _processor->advanceInstructionPointer();
     return result;
 }

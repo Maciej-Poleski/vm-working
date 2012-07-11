@@ -16,7 +16,7 @@ class Processor : public QObject
 {
     Q_OBJECT
 public:
-    explicit Processor(QObject *parent = 0);
+    explicit Processor(QObject* parent = 0);
     void nop();
 
     Register::Type instructionPointer() const;
@@ -30,7 +30,7 @@ public:
     void _loadToRegister(uint8_t index, Register::Type value);
 
 signals:
-    void registerChanged(uint8_t index,Register::Type newValue);
+    void registerChanged(uint8_t index, Register::Type newValue);
     void registerChanged(uint8_t index);
     void instructionPointerChanged(Register::Type newValue);
     void instructionPointerChanged();
@@ -46,9 +46,9 @@ private slots:
 private:
     void connectSignalsAndSlots();
 
-    Register *_registers[16];
+    Register* _registers[16];
     bool _registers_changed[16];
-    Register *_instructionPointer;
+    Register* _instructionPointer;
     bool _instructionPointer_changed;
 };
 

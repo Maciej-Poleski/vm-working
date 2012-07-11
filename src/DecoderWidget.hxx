@@ -10,9 +10,9 @@ class DecoderWidget : public QWidget, private Ui::DecoderWidget
     Q_OBJECT
 
 public:
-    explicit DecoderWidget(QWidget *parent = 0);
+    explicit DecoderWidget(QWidget* parent = 0);
 
-    void setDecoder(Decoder *decoder);
+    void setDecoder(Decoder* decoder);
 
 private slots:
     void populateTextBrowser();
@@ -21,7 +21,7 @@ private:
     void connectDecoderToThis();
     void disconnectDecoderFromThis();
 
-    Decoder *_decoder;
+    Decoder* _decoder;
 };
 
 #endif // DECODERWIDGET_HXX

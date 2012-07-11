@@ -11,13 +11,13 @@ class InstructionsProvider
 public:
     InstructionsProvider();
 
-    void setProcessor(Processor *processor);
-    void setMemory(Memory *memory);
+    void setProcessor(Processor* processor);
+    void setMemory(Memory* memory);
     Register::Type nextOpCode();
 
 private:
-    Processor *_processor;
-    Memory *_memory;
+    Processor* _processor;
+    Memory* _memory;
 };
 
 #endif // INSTRUCTIONSPROVIDER_HXX

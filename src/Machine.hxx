@@ -13,11 +13,11 @@ class Machine : public QObject
 {
     Q_OBJECT
 public:
-    explicit Machine(QObject *parent = 0);
+    explicit Machine(QObject* parent = 0);
 
-    Processor *processor();
-    Decoder *decoder();
-    Memory *memory();
+    Processor* processor();
+    Decoder* decoder();
+    Memory* memory();
 
 signals:
     void stopped();
@@ -32,9 +32,9 @@ private:
     void connectSignalsAndSlots();
 
     QThread thread;
-    Processor *_processor;
-    Decoder *_decoder;
-    Memory *_memory;
+    Processor* _processor;
+    Decoder* _decoder;
+    Memory* _memory;
 };
 
 #endif // MACHINE_HXX

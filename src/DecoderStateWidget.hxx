@@ -10,9 +10,9 @@ class DecoderStateWidget : public QWidget, private Ui::DecoderStateWidget
     Q_OBJECT
 
 public:
-    explicit DecoderStateWidget(QWidget *parent = 0);
+    explicit DecoderStateWidget(QWidget* parent = 0);
 
-    void setDecoder(Decoder *decoder);
+    void setDecoder(Decoder* decoder);
 
 public slots:
     void repopulateGui();
@@ -24,7 +24,7 @@ private:
     void disconnectDecoderFromThis();
     void connectSignalsAndSlots();
 
-    Decoder *_decoder;
+    Decoder* _decoder;
 };
 
 #endif // DECODERSTATEWIDGET_HXX

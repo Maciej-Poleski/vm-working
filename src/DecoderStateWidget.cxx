@@ -8,19 +8,19 @@
 #include <QtGui/QFileDialog>
 #include <QtGui/QMessageBox>
 
-DecoderStateWidget::DecoderStateWidget(QWidget *parent) :
-    QWidget(parent),_decoder(nullptr)
+DecoderStateWidget::DecoderStateWidget(QWidget* parent) :
+    QWidget(parent), _decoder(nullptr)
 {
     setupUi(this);
     connectSignalsAndSlots();
 }
 
-void DecoderStateWidget::setDecoder(Decoder *decoder)
+void DecoderStateWidget::setDecoder(Decoder* decoder)
 {
-    if(_decoder!=nullptr)
+    if(_decoder != nullptr)
         disconnectDecoderFromThis();
-    _decoder=decoder;
-    if(_decoder!=nullptr)
+    _decoder = decoder;
+    if(_decoder != nullptr)
         connectDecoderToThis();
 }
 

@@ -11,10 +11,10 @@ class Register : public QObject
 public:
     typedef uint16_t Type;
 
-    explicit Register(QObject *parent = nullptr);
-    explicit Register(Type value,QObject *parent=nullptr);
+    explicit Register(QObject* parent = nullptr);
+    explicit Register(Type value, QObject* parent = nullptr);
 
-    Register& operator=(const Register &o);
+    Register& operator=(const Register& o);
     operator uint16_t() const;
 
 signals:

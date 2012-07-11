@@ -5,7 +5,7 @@
 #include "InstructionsProvider.hxx"
 #include "Memory.hxx"
 
-Machine::Machine(QObject *parent) :
+Machine::Machine(QObject* parent) :
     QObject(parent), _processor(new Processor(this)),
     _decoder(new Decoder(this)), _memory(new Memory(this))
 {
@@ -33,9 +33,9 @@ Memory* Machine::memory()
 
 void Machine::connectSignalsAndSlots()
 {
-    connect(_decoder,SIGNAL(stopped()),this,SIGNAL(stopped()));
-    connect(this,SIGNAL(stopped()),_processor,SLOT(flushSignals()));
-    connect(_memory,SIGNAL(imageLoaded()),_processor,SLOT(reinitialize()));
+    connect(_decoder, SIGNAL(stopped()), this, SIGNAL(stopped()));
+    connect(this, SIGNAL(stopped()), _processor, SLOT(flushSignals()));
+    connect(_memory, SIGNAL(imageLoaded()), _processor, SLOT(reinitialize()));
 }
 
 void Machine::start()

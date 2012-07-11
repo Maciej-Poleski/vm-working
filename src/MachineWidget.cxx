@@ -7,11 +7,11 @@
 #include "MachineControlWidget.hxx"
 #include "Machine.hxx"
 
-MachineWidget::MachineWidget(QWidget *parent) :
+MachineWidget::MachineWidget(QWidget* parent) :
     QWidget(parent), _processorStateWidget(new ProcessorStateWidget(this)),
     _decoderStateWidget(new DecoderStateWidget(this)),
     _memoryControlWidget(new MemoryControlWidget(this)),
-    _memoryStateWidget(new MemoryStateWidget(_memoryControlWidget,this)),
+    _memoryStateWidget(new MemoryStateWidget(_memoryControlWidget, this)),
     _machineControlWidget(new MachineControlWidget(this)),
     _machine(nullptr)
 {
@@ -26,12 +26,12 @@ MachineWidget::MachineWidget(QWidget *parent) :
     rightColumnLayout->addStretch(1);
 }
 
-void MachineWidget::setMachine(Machine *machine)
+void MachineWidget::setMachine(Machine* machine)
 {
     Q_CHECK_PTR(machine);
-    if(_machine!=nullptr)
+    if(_machine != nullptr)
         disconnectMachineFromThis();
-    _machine=machine;
+    _machine = machine;
     _processorStateWidget->setProcessor(machine->processor());
     _decoderStateWidget->setDecoder(machine->decoder());
     _memoryStateWidget->setMemory(machine->memory());
@@ -43,17 +43,16 @@ void MachineWidget::setMachine(Machine *machine)
 
 void MachineWidget::connectMachineToThis()
 {
-    connect(_machine,SIGNAL(stopped()),this,SLOT(repopulateGui()));
+    connect(_machine, SIGNAL(stopped()), this, SLOT(repopulateGui()));
 }
 
 void MachineWidget::disconnectMachineFromThis()
 {
-    disconnect(_machine,SIGNAL(stopped()),this,SLOT(repopulateGui()));
+    disconnect(_machine, SIGNAL(stopped()), this, SLOT(repopulateGui()));
 }
 
 void MachineWidget::repopulateGui()
 {
     _processorStateWidget->repopulateGui();
-    _decoderStateWidget->repopulateGui();
     _memoryStateWidget->repopulateGui();
 }

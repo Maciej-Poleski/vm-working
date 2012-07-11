@@ -10,9 +10,9 @@ class MachineControlWidget : public QWidget, private Ui::MachineControlWidget
     Q_OBJECT
 
 public:
-    explicit MachineControlWidget(QWidget *parent = 0);
+    explicit MachineControlWidget(QWidget* parent = 0);
 
-    void setMachine(Machine *machine);
+    void setMachine(Machine* machine);
 
 private slots:
     void machineStarting();
@@ -22,7 +22,7 @@ private:
     void connectMachineToThis();
     void disconnectMachineFromThis();
 
-    Machine *_machine;
+    Machine* _machine;
 };
 
 #endif // MACHINECONTROLWIDGET_HXX

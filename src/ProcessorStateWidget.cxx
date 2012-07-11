@@ -4,31 +4,31 @@
 
 #include "Processor.hxx"
 
-ProcessorStateWidget::ProcessorStateWidget(QWidget *parent) :
+ProcessorStateWidget::ProcessorStateWidget(QWidget* parent) :
     QWidget(parent)
 {
     setupUi(this);
 }
 
-void ProcessorStateWidget::setProcessor(Processor *processor)
+void ProcessorStateWidget::setProcessor(Processor* processor)
 {
-    _processor=processor;
+    _processor = processor;
     connectProcesorToThis();
 }
 
 void ProcessorStateWidget::connectProcesorToThis()
 {
-    connect(_processor,SIGNAL(instructionPointerChanged()),
-            this,SLOT(disableInstructionPointerLineEdit()));
-    connect(_processor,SIGNAL(instructionPointerChanged(Register::Type)),
-            this,SLOT(updateInstructionPointerLineEdit(Register::Type)));
+    connect(_processor, SIGNAL(instructionPointerChanged()),
+            this, SLOT(disableInstructionPointerLineEdit()));
+    connect(_processor, SIGNAL(instructionPointerChanged(Register::Type)),
+            this, SLOT(updateInstructionPointerLineEdit(Register::Type)));
     updateInstructionPointerLineEdit(_processor->instructionPointer());
-    connect(_processor,SIGNAL(registerChanged(uint8_t)),
-            this,SLOT(disableRegisterLineEdit(uint8_t)));
-    connect(_processor,SIGNAL(registerChanged(uint8_t,Register::Type)),
-            this,SLOT(updateRegisterLineEdit(uint8_t,Register::Type)));
-    for(uint8_t i=1;i<=16;++i)
-        updateRegisterLineEdit(i,_processor->getRegister(i));
+    connect(_processor, SIGNAL(registerChanged(uint8_t)),
+            this, SLOT(disableRegisterLineEdit(uint8_t)));
+    connect(_processor, SIGNAL(registerChanged(uint8_t, Register::Type)),
+            this, SLOT(updateRegisterLineEdit(uint8_t, Register::Type)));
+    for(uint8_t i = 1; i <= 16; ++i)
+        updateRegisterLineEdit(i, _processor->getRegister(i));
 }
 
 void ProcessorStateWidget::disableInstructionPointerLineEdit()
@@ -93,7 +93,7 @@ void ProcessorStateWidget::disableRegisterLineEdit(uint8_t index)
         r15LineEdit->setDisabled(true);
         break;
     default:
-        Q_ASSERT(index==16);
+        Q_ASSERT(index == 16);
         r16LineEdit->setDisabled(true);
         break;
     }
@@ -101,7 +101,7 @@ void ProcessorStateWidget::disableRegisterLineEdit(uint8_t index)
 
 void
 ProcessorStateWidget::updateRegisterLineEdit(uint8_t index,
-                                             Register::Type newValue)
+        Register::Type newValue)
 {
     switch(index)
     {
@@ -166,7 +166,7 @@ ProcessorStateWidget::updateRegisterLineEdit(uint8_t index,
         r15LineEdit->setEnabled(true);
         break;
     default:
-        Q_ASSERT(index==16);
+        Q_ASSERT(index == 16);
         r16LineEdit->setText(QString::number(newValue));
         r16LineEdit->setEnabled(true);
         break;
@@ -175,6 +175,6 @@ ProcessorStateWidget::updateRegisterLineEdit(uint8_t index,
 
 void ProcessorStateWidget::repopulateGui()
 {
-    for(uint8_t i=1;i<=16;++i)
-        updateRegisterLineEdit(i,_processor->getRegister(i));
+    for(uint8_t i = 1; i <= 16; ++i)
+        updateRegisterLineEdit(i, _processor->getRegister(i));
 }
