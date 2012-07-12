@@ -1,4 +1,5 @@
 #include "Processor.hxx"
+#include "Memory.hxx"
 
 Processor::Processor(QObject* parent) :
     QObject(parent),
@@ -13,13 +14,15 @@ _registers_changed {false, false, false, false, false, false, false, false, fals
                     false, false, false, false, false, false, false
                    },
 _instructionPointer {new Register(0, this)},
-_instructionPointer_changed {false}
+_instructionPointer_changed {false},
+_memory {nullptr}
 {
     connectSignalsAndSlots();
 }
 
-void Processor::nop()
+void Processor::setMemory(Memory* memory)
 {
+    _memory=memory;
 }
 
 void Processor::connectSignalsAndSlots()
@@ -122,7 +125,7 @@ void Processor::copyToRegister(uint8_t index, Register::Type value)
     _registers[index - 1]->setValue(value);
 }
 
-void Processor::_loadToRegister(uint8_t index, Register::Type value)
+void Processor::cpu_loadToRegister(uint8_t index, Register::Type value)
 {
     Q_ASSERT(index >= 0);
     Q_ASSERT(index < 16);
@@ -133,4 +136,11 @@ void Processor::reinitialize()
 {
     _instructionPointer->setValue(0);
     flushSignals();
+}
+
+void Processor::cpu_loadFromMemoryToRegister(uint8_t index, Register::Type address)
+{
+    Q_ASSERT(index >= 0);
+    Q_ASSERT(index < 16);
+    _registers[index]->setValue(_memory->getMemoryCeil(address));
 }

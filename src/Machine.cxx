@@ -11,6 +11,7 @@ Machine::Machine(QObject* parent) :
 {
     _decoder->setProcessor(_processor);
     _decoder->setMemory(_memory);
+    _processor->setMemory(_memory);
     moveToThread(&thread);
     thread.start();
     connectSignalsAndSlots();

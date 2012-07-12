@@ -7,6 +7,8 @@
 
 #include "Register.hxx"
 
+class Memory;
+
 /**
  * @brief Klasa obsługująca podstawowe funkcjonalności procesora.
  *
@@ -17,7 +19,8 @@ class Processor : public QObject
     Q_OBJECT
 public:
     explicit Processor(QObject* parent = 0);
-    void nop();
+
+    void setMemory(Memory *memory);
 
     Register::Type instructionPointer() const;
     Register::Type getRegister(uint8_t index) const;
@@ -27,7 +30,8 @@ public:
 
     // Instruction set
 
-    void _loadToRegister(uint8_t index, Register::Type value);
+    void cpu_loadToRegister(uint8_t index, Register::Type value);
+    void cpu_loadFromMemoryToRegister(uint8_t index, Register::Type address);
 
 signals:
     void registerChanged(uint8_t index, Register::Type newValue);
@@ -50,6 +54,8 @@ private:
     bool _registers_changed[16];
     Register* _instructionPointer;
     bool _instructionPointer_changed;
+
+    Memory *_memory;
 };
 
 #endif // PROCESSOR_HXX
